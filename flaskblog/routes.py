@@ -1,20 +1,7 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import backref
-from sqlalchemy.sql.schema import PrimaryKeyConstraint
-from forms import RegistrationForm, LoginForm
-
-
-app = Flask(__name__)
-# Secret key
-app.config['SECRET_KEY'] = 'e33cc6fcf38be4c8f4062ab1fae038b3'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-
-# create an SQLAlchemy Database instance
-db = SQLAlchemy(app)
-
-from models import User, Post
-
+from flask import render_template, url_for, flash, redirect
+from flaskblog import app
+from flaskblog.forms import RegistrationForm, LoginForm
+from flaskblog.models import User, Post
 
 
 posts = [
@@ -31,6 +18,7 @@ posts = [
         'date_posted': 'November 14, 2020'
     }
 ]
+ 
 
 @app.route('/')
 @app.route('/home')
@@ -58,7 +46,4 @@ def login():
             return redirect(url_for('home'))
         else:
             flash(f'Login Unsuccessful. Please check username and password!', 'danger')    
-    return render_template('login.html', title='Login', form=form)        
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    return render_template('login.html', title='Login', form=form)       
