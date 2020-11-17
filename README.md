@@ -11,4 +11,5 @@
 # Packages 
 - pip install flask
 - pip install flask-wtf
-- pip install Flask-SQLAlchemy
+- pip install flask-sqlalchemy
+- pip install flask-bcrypt
