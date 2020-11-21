@@ -1,4 +1,4 @@
-# Flask_SQLAlchemy_Blog
+# Blog Application with Flask and SQLAlchemy
 
 # Documentation:
 
